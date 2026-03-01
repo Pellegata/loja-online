@@ -23,9 +23,12 @@ module.exports = {
         allowNull: false
       },
       perfil: {
-        type: Sequelize.ENUM('admin', 'funcionario', 'cliente'),
+        type: Sequelize.STRING,
         allowNull: false,
-        defaultValue: 'cliente'
+        defaultValue: 'cliente',
+        validate: {
+          isIn: [['admin', 'funcionario', 'cliente']]
+        }
       },
       createdAt: {
         allowNull: false,
@@ -39,8 +42,5 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Usuarios');
-    await queryInterface.sequelize.query(
-      'DROP TYPE IF EXISTS "enum_Usuarios_perfil";'
-    );
   },
 };

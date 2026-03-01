@@ -4,8 +4,9 @@ class CarrinhoItemService {
 
     // 🔎 Buscar ou criar carrinho do usuário
     async buscarOuCriarCarrinho(usuario_id) {
+        // buscar carrinho
         let carrinho = await Carrinho.findOne({ where: { usuario_id } })
-
+        // se não existir cria
         if (!carrinho) {
             carrinho = await Carrinho.create({ usuario_id })
         }
@@ -19,15 +20,15 @@ class CarrinhoItemService {
         if (quantidade <= 0) {
             throw new Error('Quantidade inválida')
         }
-
+        // busca carrinho
         const carrinho = await this.buscarOuCriarCarrinho(usuario_id)
-
+        //busca produto
         const produto = await Produto.findByPk(produto_id)
-
+        // se produto nao existir = produto não encontrado
         if (!produto) {
             throw new Error('Produto não encontrado')
         }
-
+        // busca item do carrinho
         const itemExistente = await CarrinhoItem.findOne({
             where: {
                 carrinho_id: carrinho.id,

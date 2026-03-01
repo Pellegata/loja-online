@@ -44,9 +44,12 @@ module.exports = (sequelize, DataTypes) => {
       },
 
       perfil: {
-        type: DataTypes.ENUM('cliente', 'admin'),
+        type: DataTypes.STRING,
         allowNull: false,
         defaultValue: 'cliente',
+        validate: {
+          isIn: [['admin', 'funcionario', 'cliente']]
+        }
       },
     },
     {
@@ -57,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
           exclude: ['senha']
         }
       },
-      scopes:  {
+      scopes: {
         comSenha: {
           attributes: {}
         }

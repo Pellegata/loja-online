@@ -4,6 +4,7 @@ const auth = require('./auth.routes')
 const categoria = require('./categoria.routes')
 const produto = require('./produto.routes')
 const carrinho = require('./carrinhoItem.routes')
+const pedido = require('./pedido.routes')
 
 module.exports = (app) => {
     app.use(
@@ -12,7 +13,8 @@ module.exports = (app) => {
         usuario,
         categoria,
         produto,
-        carrinho
+        carrinho,
+        pedido
     )
 }
 

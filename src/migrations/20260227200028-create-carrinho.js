@@ -42,8 +42,5 @@ module.exports = {
 
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Carrinhos');
-    await queryInterface.sequelize.query(
-      'DROP TYPE IF EXISTS "enum_Carrinhos_status";'
-    );
   },
 };
