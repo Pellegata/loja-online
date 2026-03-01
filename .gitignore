@@ -13,6 +13,7 @@ yarn-error.log*
 
 # Sequelize
 src/config/config.js
+src/config/config.json
 
 # Build
 dist/

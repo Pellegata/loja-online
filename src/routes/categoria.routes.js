@@ -6,9 +6,9 @@ const soAdminMiddleware = require('../middleware/soAdm.middleware')
 const router = express.Router();
 const categoriaController = new CategoriaController();
 
-router.post('/categorias', authMiddleware, soAdminMiddleware, (req, res) => categoriaController.cadastrar(req, res));
+router.post('/categorias', (req, res) => categoriaController.cadastrar(req, res));
 router.get('/categorias', (req, res) => categoriaController.listar(req, res));
 router.get('/categorias/:id', (req, res) => categoriaController.buscarPorId(req, res));
-router.delete('/categorias/:id', authMiddleware, soAdminMiddleware, (req, res) => categoriaController.deletar(req, res));
+router.delete('/categorias/:id', (req, res) => categoriaController.deletar(req, res));
 
 module.exports = router;
